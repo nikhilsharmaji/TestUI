@@ -109,3 +109,97 @@ class TopCards extends StatelessWidget {
     );
   }
 }
+
+class CircleImage extends StatelessWidget {
+  CircleImage({required this.image});
+  String? image;
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(0, 8, 8, 1),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(22), // Image border
+          child: SizedBox.fromSize(
+            size: const Size.fromRadius(30), // Image radius
+            child: Image.network(image!, fit: BoxFit.cover),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ImageContainer extends StatelessWidget {
+  const ImageContainer({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.fromLTRB(20, 0, 20, 10),
+      margin: EdgeInsets.fromLTRB(0, 10, 8, 10),
+      width: 160.0,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+            image: NetworkImage(
+                'https://images.adsttc.com/media/images/5e74/f376/b357/6549/2a00/055c/large_jpg/Ben_Hosking.jpg?1584722798'),
+            fit: BoxFit.cover),
+        borderRadius: BorderRadius.all(Radius.circular(40)),
+      ),
+      child: Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(22))),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Recipe',
+                    style: TextStyle(
+                        fontSize: 7,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.grey),
+                  ),
+                  Text('Username here',
+                      style:
+                          TextStyle(fontSize: 13, fontWeight: FontWeight.bold)),
+                  Text('Short description',
+                      style: TextStyle(
+                          fontSize: 7,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.grey)),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Recipes',
+                          style: TextStyle(
+                              fontSize: 7,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.grey)),
+                      Text('22-October-2021',
+                          style: TextStyle(
+                              fontSize: 7,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.grey)),
+                    ],
+                  )
+                ],
+              ),
+            ),
+          )
+        ],
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.end,
+      ),
+    );
+  }
+}
